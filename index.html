@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eating Together</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="call-screen">
+
+        <!-- Main video -->
+        <video
+            id="remoteVideo"
+            class="remote-video"
+            src="assets/kath.mp4"
+            autoplay
+            muted
+            loop
+            playsinline>
+        </video>
+
+        <!-- Dark overlay -->
+        <div class="video-overlay"></div>
+
+        <!-- Top information -->
+        <header class="call-header">
+
+            <button class="header-button" aria-label="Back">
+                ‹
+            </button>
+
+            <div class="person-info">
+
+                <img
+                    src="assets/profile.jpg"
+                    class="profile-picture"
+                    alt="Profile picture">
+
+                <div>
+                    <div class="person-name">
+                        Kathryn Bernardo
+                        <span class="verified">✓</span>
+                    </div>
+
+                    <div class="status">
+                        Active now
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="header-button" aria-label="More">
+                ⋮
+            </button>
+
+        </header>
+
+
+        <!-- Call information -->
+        <div class="call-info">
+            <div class="call-time" id="callTime">
+                00:00
+            </div>
+
+            <div class="eating-status">
+   
+            </div>
+        </div>
+
+
+        <!-- Your camera -->
+        <div class="camera-container" id="cameraContainer">
+
+            <video
+                id="localVideo"
+                autoplay
+                muted
+                playsinline>
+            </video>
+
+            <div class="camera-off" id="cameraOff">
+                <span>📷</span>
+            </div>
+
+        </div>
+
+
+        <!-- Controls -->
+        <div class="controls">
+
+            <button
+                class="control-button"
+                id="muteButton"
+                title="Mute microphone">
+                <span id="muteIcon">🎤</span>
+            </button>
+
+            <button
+                class="control-button"
+                id="cameraButton"
+                title="Turn camera off">
+                <span id="cameraIcon">📹</span>
+            </button>
+
+            <button
+                class="control-button end-call"
+                id="endCallButton"
+                title="End call">
+                ☎
+            </button>
+
+        </div>
+
+
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+            Fan-made video call simulator
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

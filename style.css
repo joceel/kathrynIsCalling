@@ -1,0 +1,480 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.call-screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+}
+
+/* =========================
+   MAIN VIDEO
+========================= */
+
+.remote-video {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 100%;
+    height: 100%;
+
+    transform: translate(-50%, -50%);
+
+    object-fit: contain;
+
+    background: #000;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.55),
+            transparent 25%,
+            transparent 65%,
+            rgba(0, 0, 0, 0.65)
+        );
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.call-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+
+    padding: 22px 25px;
+
+    z-index: 10;
+}
+
+.header-button {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    color: white;
+
+    font-size: 30px;
+    line-height: 42px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition: background 0.2s;
+}
+
+.header-button:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.person-info {
+    display: flex;
+    align-items: center;
+
+    margin: auto;
+}
+
+.profile-picture {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    margin-right: 11px;
+
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.person-name {
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.verified {
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 15px;
+    height: 15px;
+
+    margin-left: 3px;
+
+    border-radius: 50%;
+
+    background: #1877f2;
+
+    color: white;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    vertical-align: 2px;
+}
+
+.status {
+    margin-top: 2px;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   CALL TIMER
+========================= */
+
+.call-info {
+    position: absolute;
+
+    top: 100px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+
+    text-align: center;
+
+    color: white;
+
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.call-time {
+    font-size: 13px;
+
+    opacity: 0.85;
+}
+
+.eating-status {
+    margin-top: 4px;
+
+    font-size: 13px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================
+   LOCAL CAMERA
+========================= */
+
+.camera-container {
+    position: absolute;
+
+    right: 25px;
+    bottom: 105px;
+
+    width: 230px;
+    aspect-ratio: 16 / 10;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background: #181818;
+
+    border: 2px solid rgba(255, 255, 255, 0.85);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.5);
+
+    z-index: 20;
+
+    transition:
+        width 0.25s ease,
+        transform 0.25s ease;
+}
+
+.camera-container:hover {
+    transform: scale(1.02);
+}
+
+#localVideo {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transform: scaleX(-1);
+}
+
+.camera-off {
+    position: absolute;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #242424;
+
+    color: white;
+
+    font-size: 35px;
+}
+
+.camera-off.active {
+    display: flex;
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls {
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    z-index: 30;
+}
+
+.control-button {
+    width: 54px;
+    height: 54px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(50, 50, 50, 0.8);
+
+    color: white;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.15s,
+        background 0.15s;
+}
+
+.control-button:hover {
+    transform: scale(1.08);
+
+    background: rgba(75, 75, 75, 0.9);
+}
+
+.control-button:active {
+    transform: scale(0.95);
+}
+
+.end-call {
+    width: 60px;
+    height: 60px;
+
+    background: #fa383e;
+
+    font-size: 24px;
+
+    transform: rotate(135deg);
+}
+
+.end-call:hover {
+    background: #e92c33;
+
+    transform: rotate(135deg) scale(1.08);
+}
+
+
+/* =========================
+   DISCLAIMER
+========================= */
+
+.disclaimer {
+    position: absolute;
+
+    left: 50%;
+    bottom: 5px;
+
+    transform: translateX(-50%);
+
+    z-index: 40;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    font-size: 9px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .call-header {
+        padding: 15px;
+    }
+
+    .header-button {
+        width: 38px;
+        height: 38px;
+
+        font-size: 26px;
+    }
+
+    .profile-picture {
+        width: 40px;
+        height: 40px;
+    }
+
+    .person-name {
+        font-size: 14px;
+    }
+
+    .camera-container {
+        right: 15px;
+        bottom: 105px;
+
+        width: 130px;
+
+        border-radius: 10px;
+    }
+
+    .controls {
+        bottom: 25px;
+
+        gap: 12px;
+    }
+
+    .control-button {
+        width: 48px;
+        height: 48px;
+    }
+
+    .end-call {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+.call-ended {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #111;
+
+    color: white;
+
+    text-align: center;
+
+    z-index: 100;
+}
+
+.ended-icon {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fa383e;
+
+    font-size: 28px;
+
+    transform: rotate(135deg);
+
+    margin-bottom: 20px;
+}
+
+.call-ended h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.call-ended p {
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+.call-ended button {
+    border: none;
+
+    padding: 12px 22px;
+
+    border-radius: 8px;
+
+    background: #1877f2;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.call-ended button:hover {
+    background: #0d65d9;
+}
